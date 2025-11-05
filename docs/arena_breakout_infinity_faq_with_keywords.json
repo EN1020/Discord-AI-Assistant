@@ -1,0 +1,214 @@
+[
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__001",
+    "question": "遊戲與原版《暗區突圍》有什麼差別？",
+    "answer": "Infinity 版本主打「開放式突圍體驗」，新增職業模組、基地升級與多種戰術配件，節奏更快、獎勵更明確。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "差異",
+      "版本",
+      "特色"
+    ],
+    "keywords_en": [
+      "difference",
+      "feature",
+      "version"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__002",
+    "question": "是否能繼承原帳號？",
+    "answer": "依平台不同，若使用同帳號登入（如騰訊、TapTap、Google、Apple ID），可部分繼承角色資料與皮膚。請依官方公告為準。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "帳號",
+      "資料",
+      "登入",
+      "角色"
+    ],
+    "keywords_en": [
+      "character",
+      "data",
+      "account",
+      "login"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__003",
+    "question": "遊戲需要全程連線嗎？",
+    "answer": "是的。本作為線上戰術射擊遊戲，包含玩家配對與即時戰鬥，因此需穩定網路連線。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "網路",
+      "伺服器",
+      "配對",
+      "線上"
+    ],
+    "keywords_en": [
+      "network",
+      "matchmaking",
+      "online",
+      "server"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__004",
+    "question": "裝備死亡後會不會掉？",
+    "answer": "若未成功撤離，所有未保險的物品將遺失；若投保則有機率返還，視版本保險機制而定。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "保險",
+      "死亡",
+      "掉裝",
+      "撤離"
+    ],
+    "keywords_en": [
+      "extraction",
+      "death",
+      "drop",
+      "insurance"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__005",
+    "question": "遊戲閃退、黑屏或卡載入怎麼辦？",
+    "answer": "1. 清除快取或重新啟動遊戲。\n2. 更新顯示驅動與系統。\n3. 確認剩餘儲存空間大於 3GB。\n4. 若持續發生，透過客服反饋。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "黑屏",
+      "錯誤",
+      "閃退",
+      "卡載入"
+    ],
+    "keywords_en": [
+      "error",
+      "crash",
+      "black screen",
+      "freeze"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__006",
+    "question": "幀數太低或過熱怎麼辦？",
+    "answer": "- 調降畫質設定（特效、陰影、反鋸齒）\n- 開啟「省電模式」或「效能模式」\n- 確保裝置散熱良好並關閉背景應用。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "過熱",
+      "效能",
+      "幀數",
+      "畫質"
+    ],
+    "keywords_en": [
+      "graphics",
+      "heat",
+      "performance",
+      "fps"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__007",
+    "question": "匹配時間太長？",
+    "answer": "- 避開尖峰時段\n- 選擇低延遲伺服器\n- 嘗試更改匹配模式（單人/雙人/小隊）",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "配對",
+      "伺服器",
+      "延遲"
+    ],
+    "keywords_en": [
+      "matchmaking",
+      "server",
+      "latency"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__008",
+    "question": "商城是否為「Pay to Win」？",
+    "answer": "官方宣稱保持平衡性，付費項目以外觀、便利性為主，不會直接影響戰鬥數值。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "商城",
+      "付費",
+      "平衡"
+    ],
+    "keywords_en": [
+      "payment",
+      "p2w",
+      "shop",
+      "balance"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__009",
+    "question": "語音與隊友通訊問題？",
+    "answer": "- 請檢查麥克風權限與設備設定。\n- 若出現延遲或回音，建議使用耳機。\n- 可使用「文字快速指令」代替語音。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "麥克風",
+      "耳機",
+      "通訊"
+    ],
+    "keywords_en": [
+      "voice",
+      "communication",
+      "microphone"
+    ]
+  },
+  {
+    "id": "arena_breakout_infinity_faq_v1.1_2025-11-04__010",
+    "question": "如何回報外掛或錯誤？",
+    "answer": "1. 遊戲內點擊「設定 → 客服 → 問題回報」\n2. 附上角色 ID、伺服器、發生時間與錄影截圖\n3. 官方將進行審查與處理\n\n附註：\n• 若遇伺服器維護，請查看官方公告或 TapTap/Google Play 最新通知。\n• 官方社群：Discord、Facebook、微博均提供公告與活動資訊。",
+    "tags": [
+      "game",
+      "faq",
+      "arena-breakout-infinity"
+    ],
+    "keywords_zh": [
+      "檢舉",
+      "回報",
+      "外掛"
+    ],
+    "keywords_en": [
+      "ban",
+      "cheater",
+      "report",
+      "exploit"
+    ]
+  }
+]

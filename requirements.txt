@@ -1,0 +1,17 @@
+# Discord bot
+discord.py>=2.3,<3
+aiohttp>=3.9
+
+# OpenAI 官方 SDK
+openai>=1.40.0
+
+# env
+python-dotenv>=1.0.1
+
+# RAG 相關
+tiktoken>=0.7.0
+pypdf>=4.0.0
+numpy>=1.26
+discord.py==2.4.0
+openai>=1.40.0
+python-dotenv>=1.0.1

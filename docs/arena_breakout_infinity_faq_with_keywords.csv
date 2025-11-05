@@ -1,0 +1,26 @@
+id,question,answer,tags,keywords_zh,keywords_en
+arena_breakout_infinity_faq_v1.1_2025-11-04__001,遊戲與原版《暗區突圍》有什麼差別？,Infinity 版本主打「開放式突圍體驗」，新增職業模組、基地升級與多種戰術配件，節奏更快、獎勵更明確。,"game,faq,arena-breakout-infinity","差異,版本,特色","difference,feature,version"
+arena_breakout_infinity_faq_v1.1_2025-11-04__002,是否能繼承原帳號？,依平台不同，若使用同帳號登入（如騰訊、TapTap、Google、Apple ID），可部分繼承角色資料與皮膚。請依官方公告為準。,"game,faq,arena-breakout-infinity","帳號,資料,登入,角色","character,data,account,login"
+arena_breakout_infinity_faq_v1.1_2025-11-04__003,遊戲需要全程連線嗎？,是的。本作為線上戰術射擊遊戲，包含玩家配對與即時戰鬥，因此需穩定網路連線。,"game,faq,arena-breakout-infinity","網路,伺服器,配對,線上","network,matchmaking,online,server"
+arena_breakout_infinity_faq_v1.1_2025-11-04__004,裝備死亡後會不會掉？,若未成功撤離，所有未保險的物品將遺失；若投保則有機率返還，視版本保險機制而定。,"game,faq,arena-breakout-infinity","保險,死亡,掉裝,撤離","extraction,death,drop,insurance"
+arena_breakout_infinity_faq_v1.1_2025-11-04__005,遊戲閃退、黑屏或卡載入怎麼辦？,"1. 清除快取或重新啟動遊戲。
+2. 更新顯示驅動與系統。
+3. 確認剩餘儲存空間大於 3GB。
+4. 若持續發生，透過客服反饋。","game,faq,arena-breakout-infinity","黑屏,錯誤,閃退,卡載入","error,crash,black screen,freeze"
+arena_breakout_infinity_faq_v1.1_2025-11-04__006,幀數太低或過熱怎麼辦？,"- 調降畫質設定（特效、陰影、反鋸齒）
+- 開啟「省電模式」或「效能模式」
+- 確保裝置散熱良好並關閉背景應用。","game,faq,arena-breakout-infinity","過熱,效能,幀數,畫質","graphics,heat,performance,fps"
+arena_breakout_infinity_faq_v1.1_2025-11-04__007,匹配時間太長？,"- 避開尖峰時段
+- 選擇低延遲伺服器
+- 嘗試更改匹配模式（單人/雙人/小隊）","game,faq,arena-breakout-infinity","配對,伺服器,延遲","matchmaking,server,latency"
+arena_breakout_infinity_faq_v1.1_2025-11-04__008,商城是否為「Pay to Win」？,官方宣稱保持平衡性，付費項目以外觀、便利性為主，不會直接影響戰鬥數值。,"game,faq,arena-breakout-infinity","商城,付費,平衡","payment,p2w,shop,balance"
+arena_breakout_infinity_faq_v1.1_2025-11-04__009,語音與隊友通訊問題？,"- 請檢查麥克風權限與設備設定。
+- 若出現延遲或回音，建議使用耳機。
+- 可使用「文字快速指令」代替語音。","game,faq,arena-breakout-infinity","麥克風,耳機,通訊","voice,communication,microphone"
+arena_breakout_infinity_faq_v1.1_2025-11-04__010,如何回報外掛或錯誤？,"1. 遊戲內點擊「設定 → 客服 → 問題回報」
+2. 附上角色 ID、伺服器、發生時間與錄影截圖
+3. 官方將進行審查與處理
+
+附註：
+• 若遇伺服器維護，請查看官方公告或 TapTap/Google Play 最新通知。
+• 官方社群：Discord、Facebook、微博均提供公告與活動資訊。","game,faq,arena-breakout-infinity","檢舉,回報,外掛","ban,cheater,report,exploit"
