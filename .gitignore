@@ -1,6 +1,13 @@
-# Ignore Python virtual environment
-.venv/
-venv/
+# secrets
+.env
+.env.*
+
+# python build cache
 __pycache__/
 *.pyc
-.env
+
+# RAG 產生物
+rag_store/
+
+# 其他常見暫存
+*.log
