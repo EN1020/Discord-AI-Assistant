@@ -1,0 +1,82 @@
+[
+  {
+    "id": "mario_001",
+    "question": "馬力歐遊戲的基本目標是什麼？",
+    "answer": "大部分馬力歐系列遊戲的基本目標是操作主角馬力歐（或其同伴）闖過關卡、擊敗敵人並拯救公主或恢復世界和平，包含收集金幣、找到旗幟或打敗最終頭目。",
+    "keywords_zh": ["目的", "通關", "救公主", "收集金幣"],
+    "keywords_en": ["goal", "complete", "save princess", "collect coins"],
+    "tags": ["mario", "gameplay", "basics"]
+  },
+  {
+    "id": "mario_002",
+    "question": "如何取得額外生命或繼續？",
+    "answer": "常見方法包括收集 1UP 蘑菇、達到一定金幣數量（通常 100 或 200）、或找到隱藏的 1UP 房間；某些版本也有存檔/繼續系統。",
+    "keywords_zh": ["1UP", "額外生命", "金幣", "繼續"],
+    "keywords_en": ["1up", "extra life", "coins", "continue"],
+    "tags": ["mario", "survival"]
+  },
+  {
+    "id": "mario_003",
+    "question": "有哪些常見道具？",
+    "answer": "經典道具包括：超級蘑菇（變大）、火焰花（投擲火球）、星星（無敵）、羽毛/箱子（增加跳躍或特殊能力）、甚至是雲朵或管道內的特殊物品。版本不同道具也會有所差異。",
+    "keywords_zh": ["道具", "蘑菇", "火焰花", "星星"],
+    "keywords_en": ["items", "mushroom", "fire flower", "star"],
+    "tags": ["mario", "items"]
+  },
+  {
+    "id": "mario_004",
+    "question": "怎麼找到隱藏關卡或祕密？",
+    "answer": "探索關卡環境，留意可破壞磚塊、隱藏通道、白牆、或有特殊排列的方塊。某些版本需要特定道具或技巧（例如高跳）才能到達隱藏地區。查詢攻略或使用地圖也常能發現隱藏要素。",
+    "keywords_zh": ["隱藏", "祕密", "祕密關卡", "隱藏通道"],
+    "keywords_en": ["secret", "hidden", "secret level", "hidden path"],
+    "tags": ["mario", "secrets", "exploration"]
+  },
+  {
+    "id": "mario_005",
+    "question": "Boss 機制通常如何運作？",
+    "answer": "Boss 通常有多階段攻擊模式、弱點時機或需要反覆觸發特定事件（如踩特定點、丟回武器）。觀察攻擊模式並在安全時機反擊是關鍵。",
+    "keywords_zh": ["頭目", "Boss", "攻擊模式", "弱點"],
+    "keywords_en": ["boss", "attack pattern", "weak point"],
+    "tags": ["mario", "boss"]
+  },
+  {
+    "id": "mario_006",
+    "question": "多人模式如何協作或競爭？",
+    "answer": "多人模式依版本不同，有合作闖關（共同目標）或競賽（比誰先通關或拿更多金幣）。溝通與角色分工（跑位、吸引仇恨、收集資源）有助通關。",
+    "keywords_zh": ["多人", "合作", "競爭", "合作模式"],
+    "keywords_en": ["multiplayer", "co-op", "competitive"],
+    "tags": ["mario", "multiplayer"]
+  },
+  {
+    "id": "mario_007",
+    "question": "平台/系統需求或支援哪些主機？",
+    "answer": "根據遊戲版本不同，平台從任天堂紅白機、超任、N64、GameCube、Wii、Wii U、Switch 到手持平台等都有對應作品。請以特定版本的官方系統需求為準。",
+    "keywords_zh": ["平台", "主機", "Switch", "N64"],
+    "keywords_en": ["platform", "console", "Switch"],
+    "tags": ["mario", "platforms"]
+  },
+  {
+    "id": "mario_008",
+    "question": "遊戲中常見控制技巧有哪些？",
+    "answer": "熟悉跳躍時機（短跳、長跳、連跳）、冲刺與踩踏敵人收招、以及利用牆面或箱子進行進階移動；不同版本還有旋轉、二段跳等特殊技巧。",
+    "keywords_zh": ["跳躍", "技巧", "短跳", "長跳"],
+    "keywords_en": ["jump", "technique", "short hop", "long jump"],
+    "tags": ["mario", "skills"]
+  },
+  {
+    "id": "mario_009",
+    "question": "如何向其他玩家分享關卡或自製內容？",
+    "answer": "某些馬力歐版本（如 Mario Maker）支援關卡創作與分享，通常透過內建關卡編輯器上傳作品代碼或分享到社群平台。",
+    "keywords_zh": ["分享", "關卡", "創作", "Mario Maker"],
+    "keywords_en": ["share", "level", "Mario Maker", "create"],
+    "tags": ["mario", "creation"]
+  },
+  {
+    "id": "mario_010",
+    "question": "遇到遊戲錯誤或閃退怎麼處理？",
+    "answer": "先確認遊戲版本是否為最新、主機韌體更新、重啟主機、清除快取或重新安裝；若為模擬器或移植版本，檢查相容性設定與模擬器版本，並參考官方公告或社群回報。",
+    "keywords_zh": ["閃退", "錯誤", "更新", "相容性"],
+    "keywords_en": ["crash", "error", "update", "compatibility"],
+    "tags": ["mario", "troubleshooting"]
+  }
+]
