@@ -5,6 +5,15 @@ OpenAI-powered Discord bot with persistent per-user context, local RAG over file
 ![Demo](assets/demo.gif)
 ![Architecture](assets/architecture.png)
 
+## Project Highlights
+
+- Built a Discord AI assistant that supports slash commands, mentions, DMs, local document RAG, and web-grounded answers.
+- Implemented scoped conversation memory per `(server, channel, user)` so follow-up questions preserve context without mixing users.
+- Added OpenAI Responses API integration with optional web search to reduce stale or unsupported answers.
+- Built a lightweight NumPy vector retrieval pipeline for TXT, PDF, JSON, JSONL, and CSV knowledge files.
+- Containerized the bot with Docker Compose and deployed it to a Google Cloud Free Tier VM for 24/7 operation.
+- Added CI, unit tests, Docker deployment scripts, and cloud deployment documentation.
+
 ## Features
 
 - `/ask`: conversational AI with recent context memory.
@@ -33,6 +42,8 @@ OpenAI-powered Discord bot with persistent per-user context, local RAG over file
 ├── docs/                   # TXT, PDF, JSON, JSONL, CSV knowledge files
 ├── rag_store/              # Generated vectors and metadata
 ├── tests/                  # Offline unit tests
+├── deploy/                 # Google, Oracle, and cloud deployment scripts
+├── portfolio/              # Resume and portfolio-ready project copy
 └── assets/                 # Demo media
 ```
 
@@ -150,6 +161,10 @@ ruff check .
 ```
 
 GitHub Actions is configured in `.github/workflows/ci.yml` to run ruff, compile checks, and tests on push and pull requests.
+
+## Resume / Portfolio
+
+Resume-ready project descriptions are available in [portfolio/discord-ai-assistant.md](portfolio/discord-ai-assistant.md).
 
 ## Notes
 
