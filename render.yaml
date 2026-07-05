@@ -1,0 +1,40 @@
+services:
+  - type: worker
+    runtime: docker
+    name: discord-ai-assistant
+    plan: starter
+    region: singapore
+    dockerCommand: python bot.py
+    autoDeployTrigger: commit
+    maxShutdownDelaySeconds: 60
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_CHAT_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_WEB_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_EMBED_MODEL
+        value: text-embedding-3-small
+      - key: WEB_SEARCH_MODE
+        value: auto
+      - key: WEB_SEARCH_LIVE
+        value: "true"
+      - key: USER_LOCATION_COUNTRY
+        value: TW
+      - key: USER_LOCATION_TIMEZONE
+        value: Asia/Taipei
+      - key: DOCS_DIR
+        value: /app/docs
+      - key: RAG_INDEX_DIR
+        value: /app/rag_store
+      - key: AUTO_BUILD_RAG_ON_START
+        value: "true"
+      - key: CONVERSATION_MEMORY_MESSAGES
+        value: "16"
+      - key: DISCORD_MESSAGE_LIMIT
+        value: "1900"
+      - key: SYSTEM_PROMPT
+        value: You are a helpful assistant.

@@ -1,0 +1,27 @@
+services:
+  bot:
+    build: .
+    container_name: discord-ai-assistant
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DOCS_DIR: /app/docs
+      RAG_INDEX_DIR: /app/rag_store
+    volumes:
+      - ./docs:/app/docs:ro
+      - ./rag_store:/app/rag_store
+    command: ["python", "bot.py"]
+
+  indexer:
+    build: .
+    profiles: ["tools"]
+    env_file:
+      - .env
+    environment:
+      DOCS_DIR: /app/docs
+      RAG_INDEX_DIR: /app/rag_store
+    volumes:
+      - ./docs:/app/docs:ro
+      - ./rag_store:/app/rag_store
+    command: ["python", "rag_index.py"]

@@ -1,233 +1,159 @@
-# Discord-AI-Assistant
-An Intelligent Chatbot Integrating OpenAI API with Discord for Real-Time Conversations
+# Discord AI Assistant
 
-
-💬 Discord AI Assistant
-
-Integrating OpenAI API for Real-Time Chat, RAG, and Automation
-
-A smart Discord chatbot powered by OpenAI that supports real-time conversations, Retrieval-Augmented Generation (RAG), slash commands, and lightweight automation.
-It helps communities and developers reply, summarize, and manage conversations with ease.
+OpenAI-powered Discord bot with persistent per-user context, local RAG over files in `docs/`, and optional web search for current information.
 
 ![Demo](assets/demo.gif)
 ![Architecture](assets/architecture.png)
 
-🧠 Project Motivation
+## Features
 
-As LLMs become mainstream, I wanted to explore how an assistant can live inside a social platform and deliver value immediately.
-This project shows how to connect Discord ↔ OpenAI, add knowledge retrieval (RAG) for custom docs, and ship a production-like bot with clear setup and safety practices.
+- `/ask`: conversational AI with recent context memory.
+- `/web`: forces OpenAI web search for fresh facts and source-backed answers.
+- `/rag`: answers from your local `docs/` knowledge base.
+- `/sources`: shows the most relevant local RAG sources for a query.
+- `/summarize`: summarizes your recent conversation with the bot.
+- `/forget`: clears your memory for the current channel.
+- `/reload_rag`: reloads an already-built RAG index without restarting the bot.
+- Mention or DM the bot to ask naturally.
 
-🚀 Features
+## Project Structure
 
-✅ Real-time AI Conversations — Natural and fast GPT-based replies
-
-✅ Slash Commands — /rag, /ask, /summarize ready for expansion
-
-✅ RAG (Retrieval-Augmented Generation) — Answers questions based on your uploaded PDFs or text files
-
-✅ Context Memory (Optional) — Keeps recent messages per channel for better continuity
-
-✅ Embeds & Replies — Clean message formatting and rate-limit control
-
-✅ Cross-Platform RAG — Uses NumPy cosine similarity (no FAISS dependency)
-
-✅ Secure by Design — Environment variables, safe prompts, minimal permissions
-
-
-🧩 Tech Stack
-| Layer              | Technology                              |
-| ------------------ | --------------------------------------- |
-| **Backend**        | Python 3.11+, `discord.py`, `aiohttp`   |
-| **LLM**            | OpenAI GPT-4o / GPT-4o-mini             |
-| **RAG Engine**     | NumPy cosine similarity (vector search) |
-| **Documents**      | `.pdf`, `.txt` (via `pypdf`)            |
-| **Environment**    | `.env`, `python-dotenv`                 |
-| **Optional Tools** | Docker, PM2, GitHub Actions             |
-
-
-📦 Project Structure
-
+```text
 .
-├─ bot.py                # Discord bot (slash + mention)
-├─ rag_index.py          # Build embeddings for docs (offline step)
-├─ rag_module.py         # Runtime retrieval + answer
-├─ requirements.txt
-├─ .env.example          # Sample env vars (copy to .env)
-├─ docs/                 # Put your PDF/TXT here
-├─ rag_store/            # Generated vectors + metadata
-└─ assets/               # demo.gif / architecture.png (added in step 3)
+├── bot.py                  # Discord entrypoint
+├── rag_index.py            # RAG index build entrypoint
+├── rag_module.py           # Backward-compatible RAG import wrapper
+├── discord_ai_bot/
+│   ├── config.py           # Environment settings
+│   ├── indexing.py         # Document loading, chunking, embedding
+│   ├── memory.py           # Per-user conversation memory
+│   ├── openai_service.py   # OpenAI Responses API and web search
+│   ├── rag.py              # Local vector retrieval and grounded answers
+│   └── discord_utils.py    # Discord formatting helpers
+├── docs/                   # TXT, PDF, JSON, JSONL, CSV knowledge files
+├── rag_store/              # Generated vectors and metadata
+├── tests/                  # Offline unit tests
+└── assets/                 # Demo media
+```
 
-⚙️ Setup Guide
-1️⃣ Create a Discord Application
+## Setup
 
-1.Go to Discord Developer Portal
+1. Create a Discord app and bot in the Discord Developer Portal.
+2. Enable `Message Content Intent` for mention/DM support.
+3. Invite the bot with `bot` and `applications.commands` scopes.
+4. Copy `.env.example` to `.env` and fill in your secrets.
 
-2.Create New Application → Bot → Add Bot
+```powershell
+python -m venv .venv
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-3.Copy your Bot Token
+## Environment
 
-4.Under “Privileged Gateway Intents” → enable Message Content Intent
+```env
+DISCORD_TOKEN=YOUR_DISCORD_TOKEN
+OPENAI_API_KEY=YOUR_OPENAI_KEY
 
-5.Go to OAuth2 → URL Generator
-
-  Scopes: bot, applications.commands
-
-  Permissions: Read Messages/View Channels, Send Messages
-
-2️⃣ Environment Variables
-
-Create a .env file (or copy .env.example):
-DISCORD_BOT_TOKEN=your_discord_token
-OPENAI_API_KEY=your_openai_key
 OPENAI_CHAT_MODEL=gpt-4o-mini
+OPENAI_WEB_MODEL=gpt-4o-mini
 OPENAI_EMBED_MODEL=text-embedding-3-small
+
+WEB_SEARCH_MODE=auto
+WEB_SEARCH_LIVE=true
+USER_LOCATION_COUNTRY=TW
+USER_LOCATION_TIMEZONE=Asia/Taipei
 
 RAG_INDEX_DIR=./rag_store
 DOCS_DIR=./docs
 SYSTEM_PROMPT=You are a helpful assistant.
+```
 
-3️⃣ Installation
-python -m venv .venv
-# Activate virtual environment
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+`WEB_SEARCH_MODE` can be:
 
-pip install -r requirements.txt
+- `auto`: `/ask` gives the model access to web search and lets it decide when needed.
+- `always`: all `/ask` answers can use web search.
+- `off`: disables web search except `/web`, which still forces it.
 
-4️⃣ Build RAG Index
+Optional web filters:
 
-Put your .pdf or .txt files into the ./docs/ directory, then run:
+```env
+WEB_SEARCH_ALLOWED_DOMAINS=
+WEB_SEARCH_BLOCKED_DOMAINS=reddit.com,quora.com
+```
+
+## Build RAG Index
+
+Put files into `docs/`, then run:
+
+```powershell
 python rag_index.py
+```
 
-Once completed, you’ll have:
-rag_store/vectors.npy
-rag_store/meta.pkl
+The indexer supports `.txt`, `.pdf`, `.json`, `.jsonl`, and `.csv`. It writes normalized vectors to `rag_store/vectors.npy` and metadata to `rag_store/meta.json` plus `meta.pkl` for compatibility.
 
-5️⃣ Run the Bot
+## Run
+
+```powershell
 python bot.py
+```
 
-💬 Usage
-Slash Commands
+## Docker
 
-/rag query:<your question> → Retrieves from your uploaded documents
+```powershell
+docker build -t discord-ai-assistant .
+docker run --env-file .env discord-ai-assistant
+```
 
-/ask question:<your question> → Direct conversation
+`.dockerignore` excludes `.env`, virtual environments, caches, and generated RAG indexes from the build context.
 
-/summarize → Summarize channel or uploaded text
+For a background process that restarts automatically while the host is online:
 
-Text Triggers (optional)
+```powershell
+docker compose up -d --build bot
+docker compose logs -f bot
+```
 
-!rag your question
+Rebuild the RAG index inside Docker:
 
-Mention the bot directly @YourBot What is ...?
+```powershell
+docker compose --profile tools build indexer
+docker compose --profile tools run --rm indexer
+docker compose restart bot
+```
 
-🧠 How RAG Works
+To keep the bot online when your own computer is shut down, deploy the same Compose setup to an always-on host. For a free VM path, use Google Cloud Free Tier; see [deploy/google/README.md](deploy/google/README.md) and [DEPLOYMENT.md](DEPLOYMENT.md).
 
-1.rag_index.py splits your local documents into small chunks, sends them to OpenAI Embeddings API, and stores normalized vectors (vectors.npy) with metadata (meta.pkl).
+This repo also includes `render.yaml` for deploying as a Render Background Worker.
 
-2.rag_module.py embeds each incoming query and computes cosine similarity (X @ q) to find the top relevant chunks.
+## How Context Works
 
-3.Those chunks are appended as context to the OpenAI Chat API request.
+Discord does not automatically give the bot previous messages as model context. The bot must store and resend the relevant history itself.
 
-4.The model generates grounded answers, avoiding hallucination if no relevant context exists.
+This project now keeps a short memory per `(server, channel, user)`, so one user's follow-up questions do not leak into another user's context. `/ask`, `/web`, `/rag`, mentions, and DMs all share the same memory path.
 
-🧪 Testing
-API Connectivity Test
+## Testing
 
-Create tests/test_openai.py:
-import os
-from openai import OpenAI
+Offline checks:
 
-def test_chat_minimal():
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-    r = client.chat.completions.create(
-        model=os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini"),
-        messages=[{"role": "user", "content": "ping"}],
-    )
-    assert r.choices[0].message.content
-    
-Run:
+```powershell
+python -m py_compile bot.py rag_index.py rag_module.py discord_ai_bot\*.py
+python -m unittest discover -s tests
+```
+
+Optional developer tools:
+
+```powershell
+pip install -r requirements-dev.txt
 pytest -q
+ruff check .
+```
 
-Quick RAG Test
-python rag_index.py
-python - << 'PY'
-from rag_module import RAG
-import asyncio
-async def run():
-    rag = RAG()
-    print(await rag.answer("What does the document mention about the main topic?"))
-asyncio.run(run())
-PY
+GitHub Actions is configured in `.github/workflows/ci.yml` to run ruff, compile checks, and tests on push and pull requests.
 
-💰 Cost & 🔐 Security
-Cost Estimation
+## Notes
 
-Embeddings (text-embedding-3-small) — extremely cheap (fractions of a cent per 1K tokens)
-
-Chat (gpt-4o-mini) — fast and affordable for conversational and RAG tasks
-
-Run initial tests in a small server or local environment to observe actual token usage.
-
-Security Practices
-
-🔒 Keep secrets only in .env — never commit it (.gitignore already covers it)
-
-🛑 Give your bot the minimum permissions required
-
-⚙️ Add rate limits to prevent spam and cost spikes
-
-🧠 The RAG system prompt explicitly says “If unknown, say you don’t know” to prevent hallucination
-
-🚫 Do not upload confidential or private documents unless self-hosting your vector store
-
-🧩 Troubleshooting
-| Issue                       | Solution                                                          |
-| --------------------------- | ----------------------------------------------------------------- |
-| `ModuleNotFoundError`       | Activate venv → `pip install -r requirements.txt`                 |
-| Slash command not appearing | Wait 1–2 minutes or check `await tree.sync()` inside `on_ready()` |
-| Replies too slow            | Reduce model size (`gpt-4o-mini`) or shorten documents            |
-| “RAG index not built”       | Run `python rag_index.py` after placing docs in `./docs/`         |
-| Permission error            | Re-invite the bot with correct scopes in OAuth2 URL               |
-
-🗺️ Roadmap
-
- OCR for image-based PDFs
-
- /upload command for rebuilding RAG index dynamically
-
- Voice mode (Speech-to-Text + TTS)
-
- Admin tools (filters, moderation, rate limits)
-
- Dockerfile & GitHub Actions CI pipeline
-
- 📸 Demo / Architecture (Step 3 Placeholder)
-
-To be added in Step 3 (assets/demo.gif and assets/architecture.png).
-
-Architecture Overview
-
-Discord Gateway → bot.py (events & commands)
-          │
-          ▼
-   OpenAI Chat API  ←→  rag_module.py  ←→  vectors.npy + meta.pkl
-          ▲
-          │
-   rag_index.py (offline index builder)
-          │
-        docs/ (PDF & text sources)
-
-🧾 License
-
-MIT License © 2025 EN
-
-Suggested Commit Messages
-
-docs: update README with RAG, tests, and security section
-
-feat(rag): add numpy-based retrieval and /rag command
-
-chore: add .env.example and demo placeholders
+- Keep `.env` private. Do not commit real Discord or OpenAI keys.
+- `rag_store/` is generated output and should not be committed.
+- Web search can increase API cost, especially when `WEB_SEARCH_MODE=always`.
+- For factual questions, the bot is instructed to cite web sources when web search is used and to say when information is uncertain.

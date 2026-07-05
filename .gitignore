@@ -1,13 +1,23 @@
 # secrets
 .env
 .env.*
+!.env.example
 
-# python build cache
+# python cache and test output
 __pycache__/
 *.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# RAG 產生物
+# virtual environments
+.venv/
+venv/
+env/
+
+# generated RAG index
 rag_store/
 
-# 其他常見暫存
+# logs
 *.log
