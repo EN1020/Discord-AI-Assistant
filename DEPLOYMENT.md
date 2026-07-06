@@ -8,8 +8,6 @@ To keep the bot available while your local computer is off, run this project on 
 
 - A VPS or cloud VM.
 - Google Cloud Free Tier VM.
-- Oracle Cloud Always Free VM.
-- Render Background Worker.
 - A NAS or mini PC that stays powered on.
 - A Raspberry Pi or small home server that stays powered on.
 
@@ -17,7 +15,7 @@ The same Docker Compose setup works in all of those places.
 
 ## Recommended free path: Google Cloud Free Tier
 
-Google Cloud Free Tier is now the recommended free path for this project because Oracle signup can be painful. Use a Compute Engine `e2-micro` VM in an eligible US region and deploy with the scripts in `deploy/google/`.
+Google Cloud Free Tier is the recommended free cloud path for this project. Use a Compute Engine `e2-micro` VM in an eligible US region and deploy with the scripts in `deploy/google/`.
 
 Current notes checked on 2026-07-05:
 
@@ -46,60 +44,6 @@ chmod +x deploy_bot.sh
 The first deploy creates `.env`; edit it with your secrets, then rerun `./deploy_bot.sh`.
 
 See [deploy/google/README.md](deploy/google/README.md) for the full Google Cloud walkthrough.
-
-## Alternative free path: Oracle Cloud Always Free
-
-Oracle Cloud Always Free can also run this bot, but signup and capacity can be frustrating. Use this path only if you already have an Oracle account working. Deploy with the scripts in `deploy/oracle/`.
-
-Quick path after you create an Oracle Ubuntu VM:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/EN1020/Discord-AI-Assistant/main/deploy/oracle/bootstrap_ubuntu.sh -o bootstrap_ubuntu.sh
-chmod +x bootstrap_ubuntu.sh
-./bootstrap_ubuntu.sh
-```
-
-Log out and back in, then:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/EN1020/Discord-AI-Assistant/main/deploy/oracle/deploy_bot.sh -o deploy_bot.sh
-chmod +x deploy_bot.sh
-./deploy_bot.sh
-```
-
-The first deploy creates `.env`; edit it with your secrets, then rerun `./deploy_bot.sh`.
-
-See [deploy/oracle/README.md](deploy/oracle/README.md) for the full Oracle walkthrough.
-
-## Recommended path: Render Background Worker
-
-Render Background Workers are a good fit for Discord bots because the process runs continuously and does not need inbound HTTP traffic. This repo includes `render.yaml`, so Render can create the worker from the repository.
-
-Current notes checked on 2026-07-05:
-
-- Render docs describe background workers as continuously running services with no incoming network traffic.
-- Render pricing lists background workers under service compute; the starter instance is listed at `$7/month`.
-- Render's Blueprint spec supports `type: worker`, `runtime: docker`, `dockerCommand`, and secret prompts using `sync: false`.
-
-Steps:
-
-1. Push this repo to GitHub.
-2. In Render, create a new Blueprint from the GitHub repo.
-3. Render will detect `render.yaml`.
-4. Enter these secret values when Render prompts:
-   - `DISCORD_TOKEN`
-   - `OPENAI_API_KEY`
-5. Keep the default `starter` plan or choose a larger instance if needed.
-6. Deploy.
-7. Open the Render logs and confirm the bot logs in.
-
-The Blueprint sets:
-
-- `region: singapore`, which is usually a reasonable default for Taiwan.
-- `AUTO_BUILD_RAG_ON_START=true`, so the worker can build `rag_store` at startup when the generated index is missing.
-- `DOCS_DIR=/app/docs` and `RAG_INDEX_DIR=/app/rag_store`, which are container-safe paths.
-
-Because Render workers are not your local computer, your Discord bot can keep running after your local computer is shut down.
 
 ## Local always-on while the computer is on
 

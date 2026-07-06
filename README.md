@@ -42,7 +42,7 @@ OpenAI-powered Discord bot with persistent per-user context, local RAG over file
 ├── docs/                   # TXT, PDF, JSON, JSONL, CSV knowledge files
 ├── rag_store/              # Generated vectors and metadata
 ├── tests/                  # Offline unit tests
-├── deploy/                 # Google, Oracle, and cloud deployment scripts
+├── deploy/                 # Google Cloud deployment scripts
 ├── portfolio/              # Resume and portfolio-ready project copy
 └── assets/                 # Demo media
 ```
@@ -134,8 +134,6 @@ docker compose restart bot
 ```
 
 To keep the bot online when your own computer is shut down, deploy the same Compose setup to an always-on host. For a free VM path, use Google Cloud Free Tier; see [deploy/google/README.md](deploy/google/README.md) and [DEPLOYMENT.md](DEPLOYMENT.md).
-
-This repo also includes `render.yaml` for deploying as a Render Background Worker.
 
 ## How Context Works
 
